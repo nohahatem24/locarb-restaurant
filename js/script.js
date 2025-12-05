@@ -5,8 +5,6 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     
-   
-
     // ===================================
     // MOBILE NAVIGATION TOGGLE
     // ===================================
@@ -129,6 +127,43 @@ document.addEventListener('DOMContentLoaded', function() {
         element.style.opacity = '0';
         animationObserver.observe(element);
     });
+
+    // ===================================
+    // ASSETS TIMELINE OBSERVER
+    // ===================================
+    const assetObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 100);
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+    
+    document.querySelectorAll('.asset-item').forEach(item => {
+        assetObserver.observe(item);
+    });
+
+    // ===================================
+    // SUPPLIERS SECTION OBSERVER
+    // ===================================
+    const observeSuppliers = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('.supplier-card').forEach(card => {
+                    card.style.animationPlayState = 'running';
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+
+    const suppliersSection = document.querySelector('.suppliers-section');
+    if (suppliersSection) {
+        observeSuppliers.observe(suppliersSection);
+    }
 
     // ===================================
     // CONTACT SECTION ANIMATIONS
@@ -409,7 +444,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-});
+}); // END OF DOMContentLoaded
 
 // ===================================
 // UTILITY FUNCTIONS
