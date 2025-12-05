@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoCarb - Healthy Meals Delivered</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo" id="logo"> 
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 14 180 40" width="176.55" height="38.5">
+                <g fill="none" stroke="#b46e1dff" stroke-width="2">
+                    <path
+                        d="M0 53.40L0 50.95L1.55 50.95Q2.45 50.95 3.15 50.73Q3.85 50.50 4.28 49.78Q4.70 49.05 4.70 47.60L4.70 23.50Q4.70 22.00 4.28 21.30Q3.85 20.60 3.15 20.38Q2.45 20.15 1.55 20.15L0 20.15L0 17.70L16.20 17.70L16.20 20.15L14.65 20.15Q13.80 20.15 13.10 20.35Q12.40 20.55 11.98 21.23Q11.55 21.90 11.55 23.30L11.55 50.55L21.05 50.55Q22.30 50.55 23.18 50.00Q24.05 49.45 24.55 48.43Q25.05 47.40 25.30 46.15L25.95 42.40L28.70 42.40L28.35 53.40L0 53.40Z" />
+                    <path
+                        d="M45.40 53.90Q39.65 53.90 36.33 50.43Q33 46.95 33 39.90Q33 32.90 36.17 29.45Q39.35 26.00 45.55 26.00Q51.35 26.00 54.65 29.45Q57.95 32.90 57.95 39.90Q57.95 46.95 54.78 50.43Q51.60 53.90 45.40 53.90M45.50 50.95Q47.65 50.95 48.92 49.70Q50.20 48.45 50.75 46.00Q51.30 43.55 51.30 39.90Q51.30 34.45 50 31.73Q48.70 29.00 45.45 29.00Q42.25 29.00 40.95 31.73Q39.65 34.45 39.65 39.90Q39.65 45.35 40.98 48.15Q42.30 50.95 45.50 50.95Z" />
+                    <path
+                        d="M79.75 53.90Q74.25 53.90 70.58 51.60Q66.90 49.30 65.08 45.18Q63.25 41.05 63.25 35.50Q63.25 30.10 65.15 25.98Q67.05 21.85 70.80 19.53Q74.55 17.20 80.05 17.20Q83.70 17.20 86.13 17.95Q88.55 18.70 89.75 20.00Q90.95 21.30 90.95 22.90Q90.95 24.70 89.48 25.83Q88 26.95 85.40 26.95Q85.40 25.35 84.88 23.80Q84.35 22.25 83.13 21.23Q81.90 20.20 79.80 20.20Q76.40 20.20 74.38 22.00Q72.35 23.80 71.45 27.20Q70.55 30.60 70.55 35.50Q70.55 40.15 71.58 43.45Q72.60 46.75 74.85 48.45Q77.10 50.15 80.75 50.15Q83.20 50.15 84.95 49.48Q86.70 48.80 87.90 47.75Q89.10 46.70 89.95 45.60Q90.35 45.90 90.60 46.45Q90.85 47.00 90.85 47.70Q90.85 48.70 90.25 49.78Q89.65 50.85 88.35 51.80Q87.05 52.75 84.93 53.33Q82.80 53.90 79.75 53.90Z" />
+                    <path
+                        d="M103 53.90Q100.80 53.90 99.02 53.03Q97.25 52.15 96.22 50.35Q95.20 48.55 95.20 45.80Q95.20 41.80 98 39.85Q100.80 37.90 106.45 37.70L110.60 37.55L110.60 34.70Q110.60 33 110.35 31.68Q110.10 30.35 109.32 29.60Q108.55 28.85 106.90 28.85Q105.40 28.85 104.55 29.55Q103.70 30.25 103.40 31.48Q103.10 32.70 103.10 34.25Q100.20 34.25 98.75 33.53Q97.30 32.80 97.30 31.00Q97.30 29.20 98.63 28.10Q99.95 27.00 102.20 26.50Q104.45 26.00 107.10 26.00Q112.10 26.00 114.60 27.93Q117.10 29.85 117.10 34.55L117.10 47.40Q117.10 48.75 117.38 49.53Q117.65 50.30 118.35 50.63Q119.05 50.95 120.15 50.95L120.30 50.95L120.30 53.40L112 53.40L111 49.65L110.60 49.65Q109.50 51.00 108.52 51.95Q107.55 52.90 106.27 53.40Q105 53.90 103 53.90M105.15 50.45Q106.85 50.45 108.05 49.65Q109.25 48.85 109.92 47.35Q110.60 45.85 110.60 43.85L110.60 40.00L108 40.15Q105.65 40.25 104.32 40.95Q103 41.65 102.42 42.90Q101.85 44.15 101.85 46.05Q101.85 47.50 102.20 48.48Q102.55 49.45 103.30 49.95Q104.05 50.45 105.15 50.45Z" />
+                    <path
+                        d="M123.35 53.40L123.35 50.95L123.50 50.95Q124.65 50.95 125.52 50.70Q126.40 50.45 126.92 49.68Q127.45 48.90 127.45 47.35L127.45 32.45Q127.45 30.95 126.95 30.23Q126.45 29.50 125.60 29.28Q124.75 29.05 123.65 29.05L123.50 29.05L123.50 26.60L132.70 26.60L133.65 30.90L133.90 30.90Q134.55 29.40 135.38 28.30Q136.20 27.20 137.50 26.63Q138.80 26.05 140.90 26.05Q143.75 26.05 145.13 27.05Q146.50 28.05 146.50 29.95Q146.50 31.95 145.05 33.13Q143.60 34.30 140.80 34.30Q140.80 32.90 140.57 32.03Q140.35 31.15 139.80 30.70Q139.25 30.25 138.30 30.25Q136.95 30.25 136.10 31.23Q135.25 32.20 134.78 33.65Q134.30 35.10 134.13 36.65Q133.95 38.20 133.95 39.25L133.95 47.60Q133.95 49.05 134.45 49.78Q134.95 50.50 135.80 50.73Q136.65 50.95 137.65 50.95L139.20 50.95L139.20 53.40L123.35 53.40Z" />
+                    <path
+                        d="M166.30 53.90Q163.40 53.90 161.57 52.68Q159.75 51.45 158.65 49.50L158.25 49.50L157.05 53.40L148.10 53.40L148.10 50.95L148.50 50.95Q149.50 50.95 150.40 50.70Q151.30 50.45 151.85 49.70Q152.40 48.95 152.40 47.40L152.40 21.20Q152.40 19.75 151.85 19.03Q151.30 18.30 150.40 18.08Q149.50 17.85 148.40 17.85L148.10 17.85L148.10 15.40L158.90 15.40L158.90 24.20Q158.90 25.00 158.85 26.20Q158.80 27.40 158.72 28.58Q158.65 29.75 158.60 30.40L158.85 30.40Q160 28.40 161.78 27.23Q163.55 26.05 166.45 26.05Q171.35 26.05 173.95 29.38Q176.55 32.70 176.55 39.90Q176.55 44.75 175.38 47.85Q174.20 50.95 171.93 52.43Q169.65 53.90 166.30 53.90M164.70 50.35Q167.50 50.35 168.70 47.65Q169.90 44.95 169.90 39.85Q169.90 34.65 168.68 32.10Q167.45 29.55 164.65 29.55Q161.35 29.55 160.13 32.10Q158.90 34.65 158.90 39.90Q158.90 43.30 159.43 45.60Q159.95 47.90 161.20 49.13Q162.45 50.35 164.70 50.35Z" />
+                </g>
+            </svg>
+        </div>
+
+
+
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#app">App</a></li>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="#branches">Branches</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+
+        </div>
+        <div class="hero-image">
+            <img src="images/locarblogo.jpg" alt="Healthy Meal" class="slide-in">
+        </div>
+
+        <div class="hero-content">
+            <h1 class="fade-in">HEALTHY<br>MEAL</h1>
+
+            <div class="hero-buttons">
+                <a href="#app" class="btn btn-primary">Download App</a>
+                <a href="https://order.locarbkw.com/" class="btn btn-outline">Order Now</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+
+        <div class="mission-grid">
+
+            <div class="mission-item">
+                <div class="mission-icon">
+                    <img src="images/icon1.jpg" alt="Healthy Meals Icon">
+                </div>
+                <h3>Healthy Meals</h3>
+                <p>Fresh and balanced</p>
+            </div>
+
+            <div class="mission-item">
+                <div class="mission-icon">
+                    <img src="images/icon2.jpg" alt="Premium Quality Icon">
+                </div>
+                <h3>Premium Quality</h3>
+                <p>Certified standards</p>
+            </div>
+
+            <div class="mission-item">
+                <div class="mission-icon">
+                    <img src="images/icon3.jpg" alt="Fast Delivery Icon">
+                </div>
+                <h3>Fast Delivery</h3>
+                <p>Fresh to your door</p>
+            </div>
+
+            <div class="mission-item">
+                <div class="mission-icon">
+                    <img src="images/icon4.jpg" alt="Fresh Ingredients Icon">
+                </div>
+                <h3>Fresh Ingredients</h3>
+                <p>Locally sourced</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section" id="app">
+        <div class="download-content">
+            <div>
+                <h2>Download the App</h2>
+                <p>Get our mobile app for easy ordering and exclusive deals.</p>
+                <div class="download-actions">
+                    <a href="https://apps.apple.com/us/app/locarb/id1640467099" class="app-link">
+
+                        <img src="images/appstore.jpg" alt="download-actions">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.locarb.kwt" class="app-link">
+
+                        <img src="images/googleplay.jpg" alt="download-actions">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <h2>About Us</h2>
+        <div class="meal-grid">
+            <div class="meal-card" data-card="about">
+                <div class="meal-card-image">
+                    <img src="images/meal2.jpg" alt="Healthy salad bowl" loading="lazy">
+                </div>
+                <h3>About Us</h3>
+                <p>Established in 2015, Locarb Healthy Meals Company...</p>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            <div class="meal-card" data-card="balanced">
+                <div class="meal-card-image">
+                    <img src="images/meal3.jpg" alt="eating healthy" loading="lazy">
+                </div>
+                <h3>Vision and Mission</h3>
+                <p>Locarb Healthy Meals Company envisions a world...</p>
+                <button class="read-more-btn">Read More</button>
+            </div>
+            <div class="meal-card" data-card="farm">
+                <div class="meal-card-image">
+                    <img src="images/meal1.jpg" alt="Healthy pasta bowl" loading="lazy">
+                </div>
+                <h3>Quality, Safety and Hygien System</h3>
+                <p>Locarb Healthy Meals Company places great...</p>
+                <button class="read-more-btn">Read More</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision-section" id="goals">
+        <h2>Our Goals</h2>
+        <div class="vision-card" data-card="vision">
+            <div class="vision-content">
+                <img src="images/meal4.jpg" alt="LoCarb Box" loading="lazy">
+                <div class="vision-text">
+                    <h3>Our Goals</h3>
+                    <p>Locarb Healthy Meals Company has set several goals to achieve its mission and vision. First, the
+                        company aims to promote a culture of healthy living by providing...</p>
+                    <button class="read-more-btn">Read More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="branches-section" id="branches">
+    <div class="branches-content">
+        <div>
+            <h2>Our Branches</h2>
+            <label for="branchSelector" class="sr-only">Select a branch location</label>
+            <select class="branch-selector" id="branchSelector" title="Select branch location"
+                aria-label="Select branch location">
+                <option value="subah">Subah Al Salem</option>
+                <option value="mahbulah">Mahbulah</option>
+                <option value="jabriya">Jabriya</option>
+            </select>
+            <div class="branch-info" id="branchInfo">
+                <p><strong>Subah Al Salem Location</strong></p>
+                <p>Street 118, Sabah Al Salem, Kuwait</p>
+                <p>Phone: <a href="tel:+96565558200">+965 6555 8200</a></p>
+                <p>Address: <a href="https://www.google.com/maps/place/LoCarb+-+%D9%84%D9%88%D9%83%D8%A7%D8%B1%D8%A8%E2%80%AD/@29.2632101,48.0798998,17z/data=!4m6!3m5!1s0x3fcf75a6cb1d1ec9:0x8e47c596dfe29d23!8m2!3d29.2632054!4d48.0824747!16s%2Fg%2F11j09zjbbp?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">View on Map</a></p>
+            </div>
+        </div>
+        <div class="map-container">
+            <p class="map-description">Click Image to open in Google Maps</p>
+            <a href="https://www.google.com/maps/place/LoCarb+-+%D9%84%D9%88%D9%83%D8%A7%D8%B1%D8%A8%E2%80%AD/@29.2632101,48.0798998,17z/data=!4m6!3m5!1s0x3fcf75a6cb1d1ec9:0x8e47c596dfe29d23!8m2!3d29.2632054!4d48.0824747!16s%2Fg%2F11j09zjbbp?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank" rel="noopener noreferrer" class="map-link" id="mapLink">
+                <img src="images/subahalsalemmap.jpg" alt="Map of Subah Al Salem location" class="map-image"
+                    id="mapImage" loading="lazy">
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    const branchData = {
+        subah: {
+            name: 'Subah Al Salem Location',
+            address: 'Street 118, Sabah Al Salem, Kuwait',
+            phone: '+965 6555 8200',
+            phoneLink: 'tel:+96565558200',
+            mapImage: 'images/subahalsalemmap.jpg',
+            googleMapsUrl: 'https://www.google.com/maps/place/LoCarb+-+%D9%84%D9%88%D9%83%D8%A7%D8%B1%D8%A8%E2%80%AD/@29.2632101,48.0798998,17z/data=!4m6!3m5!1s0x3fcf75a6cb1d1ec9:0x8e47c596dfe29d23!8m2!3d29.2632054!4d48.0824747!16s%2Fg%2F11j09zjbbp?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D'
+        },
+        mahbulah: {
+            name: 'Mahbulah Location',
+            address: '20, Kuwait',
+            phone: '+965 6555 8017',
+            phoneLink: 'tel:+96565558017',
+            mapImage: 'images/mahbulahmap.jpg',
+            googleMapsUrl: 'https://maps.google.com/?q=Mahbulah+Kuwait'
+        },
+        jabriya: {
+            name: 'Jabriya Location',
+            address: '4, Jabriya, Kuwait',
+            phone: '+965 6555 8202',
+            phoneLink: 'tel:+96565558202',
+            mapImage: 'images/jabriyahmap.jpg',
+            googleMapsUrl: 'https://www.google.com/maps/place/LoCarb+jabriyah+-+%D9%84%D9%88%D9%83%D8%A7%D8%B1%D8%A8+%D8%A7%D9%84%D8%AC%D8%A7%D8%A8%D8%B1%D9%8A%D8%A9%E2%80%AD/@29.3205426,48.0163998,17z/data=!4m6!3m5!1s0x3fcf9d38e356c631:0xff2af36a72d717d4!8m2!3d29.3205426!4d48.0163998!16s%2Fg%2F11qbskkpm7?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D'
+        }
+    };
+
+    const branchSelector = document.getElementById('branchSelector');
+    const branchInfo = document.getElementById('branchInfo');
+    const mapImage = document.getElementById('mapImage');
+    const mapLink = document.getElementById('mapLink');
+
+    branchSelector.addEventListener('change', function () {
+        const selectedBranch = branchData[this.value];
+
+        branchInfo.innerHTML = `
+            <p><strong>${selectedBranch.name}</strong></p>
+            <p>${selectedBranch.address}</p>
+            <p>Phone: <a href="${selectedBranch.phoneLink}">${selectedBranch.phone}</a></p>
+            <p>Address: <a href="${selectedBranch.googleMapsUrl}" target="_blank" rel="noopener noreferrer">View on Map</a></p>
+        `;
+
+        mapImage.src = selectedBranch.mapImage;
+        mapImage.alt = `Map of ${selectedBranch.name}`;
+        mapLink.href = selectedBranch.googleMapsUrl;
+    });
+</script>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2>Get In Touch</h2>
+
+            <!-- Contact Icons -->
+            <div class="contact-icons">
+                <a href="tel:+96598908087" class="contact-icon-link" aria-label="Call us">
+                    <img src="images/phone.jpg" alt="Phone" class="contact-icon">
+                </a>
+                <a href="https://wa.me/96598908087" class="contact-icon-link" aria-label="WhatsApp us" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="images/whatsapp.jpg" alt="WhatsApp" class="contact-icon">
+                </a>
+            </div>
+
+            <h3>Follow Us on Social Media</h3>
+
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="https://www.instagram.com/locarbkw/" class="social-icon-link" aria-label="Instagram"
+                    target="_blank" rel="noopener noreferrer">
+                    <img src="images/instagram.jpg" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://www.tiktok.com/@locarbkwt?_t=8l7JSwNTw9q&_r=1" class="social-icon-link"
+                    aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                    <img src="images/tiktok.jpg" alt="TikTok" class="social-icon">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>LoCarb</h3>
+                <p>Healthy meals delivered to your doorstep.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#app">App</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:+96598908087">Phone</a></li>
+                    <li><a href="https://wa.me/96598908087">WhatsApp</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/locarbkw/" target="_blank"
+                        rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.tiktok.com/@locarbkwt?_t=8l7JSwNTw9q&_r=1" target="_blank"
+                        rel="noopener noreferrer">TikTok</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p></p>
+        </div>
+
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container" id="modalContainer">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+            <div class="modal-content" id="modalContent">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
