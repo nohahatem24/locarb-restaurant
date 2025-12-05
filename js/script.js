@@ -2,9 +2,47 @@
 // LOCARB WEBSITE JAVASCRIPT
 // ===================================
 
+// Initialize modalData globally - will be updated by TranslationManager
+window.modalData = {
+    about: {
+        title: 'About Us',
+        image: 'images/meal2.jpg',
+        content: '<p>Loading...</p>'
+    },
+    balanced: {
+        title: 'Vision and Mission',
+        image: 'images/meal3.jpg',
+        content: '<p>Loading...</p>'
+    },
+    farm: {
+        title: 'Quality, Safety and Hygien System',
+        image: 'images/meal1.jpg',
+        content: '<p>Loading...</p>'
+    },
+    vision: {
+        title: 'Our Goals',
+        image: 'images/meal4.jpg',
+        content: '<p>Loading...</p>'
+    }
+};
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     
+    // ===================================
+    // INITIALIZE TRANSLATION MANAGER
+    // ===================================
+    if (typeof TranslationManager !== 'undefined') {
+        const translationManager = new TranslationManager();
+        
+        const langBtn = document.getElementById('langToggle');
+        if (langBtn) {
+            langBtn.addEventListener('click', () => {
+                translationManager.switchLanguage();
+            });
+        }
+    }
+
     // ===================================
     // MOBILE NAVIGATION TOGGLE
     // ===================================
@@ -234,21 +272,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 250));
 
     // ===================================
-    // ACCESSIBILITY ENHANCEMENTS
-    // ===================================
-    
-    // Add keyboard navigation support
-    document.addEventListener('keydown', function(e) {
-        // ESC key closes mobile menu
-        if (e.key === 'Escape') {
-            if (hamburger && navLinks) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        }
-    });
-
-    // ===================================
     // CONSOLE MESSAGE
     // ===================================
     console.log('%c🥗 LoCarb Website Loaded Successfully! 🥗', 
@@ -266,95 +289,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalContent = document.getElementById('modalContent');
     const modalClose = document.getElementById('modalClose');
 
-    // Modal data
-    const modalData = {
-        about: {
-            title: 'About Us',
-            image: 'images/meal2.jpg',
-            content: `
-                <p>Established in 2015, Locarb Healthy Meals Company specializes in offering a diverse range of delicious, high-quality and nutritious meals that promote health and wellbeing. Locarb prides itself on using only natural, fresh and organic ingredients in the preparation of its meals, making it an excellent choice for individuals seeking healthy and well-balanced food options.</p>
-
-                <p>To ensure the quality and freshness of its meals, Locarb employs the best practices in meal preparation and packaging. The company also provides meal delivery services to homes, offices and institutions, and adheres to strict standards in meal distribution to ensure prompt and efficient delivery.</p>
-
-                <p>With a fully equipped central kitchen and three restaurant branches, Locarb has rapidly expanded since its inception and has established itself as one of the leading companies in Kuwait offering healthy meal solutions.</p>
-
-                <ul>
-                    <li>Established in 2015</li>
-                    <li>Fresh, natural, organic ingredients</li>
-                    <li>Advanced preparation & packaging systems</li>
-                    <li>Home, office & institutional delivery</li>
-                    <li>Three branches across Kuwait</li>
-                </ul>
-            `
-        },
-
-        balanced: {
-            title: 'Vision and Mission',
-            image: 'images/meal3.jpg',
-            content: `
-                <p>Locarb Healthy Meals Company envisions a world where individuals have access to healthy and balanced food options that promote their overall health and well-being. The company's mission is to provide customers with delicious and nutritious meals that cater to their unique dietary needs and preferences.</p>
-
-                <p>Locarb aims to raise awareness about the importance of maintaining a healthy diet and to inspire individuals to adopt healthy eating habits as a sustainable lifestyle. Additionally, the company is committed to offering its high-quality meals at affordable prices, making them accessible to everyone.</p>
-
-                <p>Locarb strives to become the leading provider of healthy eating solutions in Kuwait and beyond, delivering nutritious and balanced meals to customers across the region.</p>
-
-                <ul>
-                    <li>Promoting healthy eating awareness</li>
-                    <li>Providing nutritious & affordable meals</li>
-                    <li>Supporting lifestyle-based health improvement</li>
-                    <li>Ensuring accessibility across Kuwait & the region</li>
-                    <li>Delivering personalized meal solutions</li>
-                </ul>
-            `
-        },
-
-        farm: {
-            title: 'Quality, Safety and Hygien System',
-            image: 'images/meal1.jpg',
-            content: `
-                <p>Locarb Healthy Meals Company places great emphasis on maintaining high standards of quality, hygiene, and safety in all operations to ensure customer satisfaction. The company applies the ISO 9001:2015 Quality Management System, which includes specialized procedures that guarantee quality at every stage of meal production and distribution.</p>
-
-                <p>Locarb also adheres to the principles of HACCP (Hazard Analysis and Critical Control Points) to ensure food safety and prevent contamination. The company maintains a safe and healthy work environment for employees and guests, following industry best practices and preventive measures to avoid risks during production and distribution.</p>
-
-                <p>Additionally, Locarb follows strict storage and refrigeration standards to maintain food quality and safety. The company regularly reviews and updates its quality, safety, and hygiene systems to meet international standards and evolving customer needs.</p>
-
-                <ul>
-                    <li>ISO 9001:2015 Quality Management System</li>
-                    <li>HACCP-certified food safety practices</li>
-                    <li>Strict hygiene & preventive procedures</li>
-                    <li>Safe storage & refrigeration processes</li>
-                    <li>Continuous evaluation & improvement</li>
-                </ul>
-            `
-        },
-
-        vision: {
-            title: 'Our Goals',
-            image: 'images/meal4.jpg',
-            content: `
-                <p>Locarb Healthy Meals Company has set several strategic goals to support its mission and vision. The company aims to promote a culture of healthy living by offering nutritious, organic and well-balanced meals that encourage individuals to adopt healthier lifestyle habits.</p>
-
-                <p>Locarb also strives to expand its presence in the regional market by offering exceptional services and building long-term partnerships with local and international companies and institutions. The company provides customized nutritional solutions designed to meet the needs of individuals, companies, and organizations.</p>
-
-                <p>Committed to innovation, Locarb continuously improves its production, packaging, and distribution technologies. The company also plans to develop new products that meet the evolving expectations of its customers.</p>
-
-                <p>Ultimately, Locarb aims to become the leading provider of healthy, high-quality meals in the region while maintaining its commitment to exceptional service, innovation, and promoting healthy living.</p>
-
-                <ul>
-                    <li>Promoting a healthy lifestyle culture</li>
-                    <li>Expanding regional market presence</li>
-                    <li>Providing customized meal solutions</li>
-                    <li>Continuous product & process innovation</li>
-                    <li>Building long-term partnerships</li>
-                    <li>Becoming the leading healthy meals provider</li>
-                </ul>
-            `
-        }
-    };
-
     // Open modal function
     function openModal(cardType) {
-        const data = modalData[cardType];
+        const data = window.modalData[cardType];
         if (!data) return;
 
         const imageHTML = data.image 
@@ -375,12 +312,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         modalOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
+        
+        // Store which modal was opened so it can refresh on language change
+        sessionStorage.setItem('lastOpenedModal', cardType);
     }
 
     // Close modal function
     function closeModal() {
         modalOverlay.classList.remove('active');
         document.body.style.overflow = '';
+        sessionStorage.removeItem('lastOpenedModal');
     }
 
     // Event listeners for meal cards
@@ -437,10 +378,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Close modal with ESC key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-            closeModal();
+    // ===================================
+    // ACCESSIBILITY ENHANCEMENTS
+    // ===================================
+    
+    // Add keyboard navigation support
+    document.addEventListener('keydown', function(e) {
+        // ESC key closes mobile menu
+        if (e.key === 'Escape') {
+            if (hamburger && navLinks) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+            // ESC key closes modal
+            if (modalOverlay && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
         }
     });
 
