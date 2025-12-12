@@ -651,7 +651,7 @@ nav.scrolled {
 }
 
 .read-more-btn {
-    background: #b46e1dff;
+    background: #1db443ff;
     color: white;
     border: none;
     padding: 0.7rem 1.5rem;
@@ -2028,6 +2028,527 @@ nav.scrolled {
     animation: slideIn 1s ease-out;
 }
 
+/* ===================================
+   PACKAGES SECTION - RESPONSIVE
+   =================================== */
+.packages-section {
+    padding: 5rem 4rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.packages-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(180, 110, 29, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 15s ease-in-out infinite;
+}
+
+.packages-section h2 {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    color: #1a1a1a;
+    font-weight: normal;
+}
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 968px) {
+    .packages-section {
+        padding: 4rem 2rem;
+    }
+    
+    .packages-section h2 {
+        font-size: 2.5rem;
+    }
+    
+    .packages-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .packages-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .packages-section h2 {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .packages-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.package-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    text-align: center;
+}
+
+.package-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #b46e1dff 0%, #ff9800 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.package-card:hover::before {
+    transform: scaleX(1);
+}
+
+.package-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 40px rgba(180, 110, 29, 0.2);
+    border-color: #b46e1dff;
+}
+
+.package-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin: 0 auto 1.5rem;
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.package-card:hover .package-icon {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .package-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .package-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.package-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+.package-card p {
+    color: #666;
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.package-price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #b46e1dff;
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.package-btn {
+    background: #1db443ff;
+    color: white;
+    border: none;
+    padding: 0.9rem 2.5rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(180, 110, 29, 0.3);
+}
+
+.package-btn:hover {
+    background: #000000ff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ===================================
+   DISHES SECTION
+   =================================== */
+.dishes-section {
+    padding: 3rem 2rem;
+    background: white;
+}
+
+.dishes-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    color: #1a1a1a;
+    font-weight: normal;
+}
+
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .dishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.dish-card {
+    aspect-ratio: 1;
+    background: #f8f9fa;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.dish-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(180, 110, 29, 0.9) 0%, rgba(0, 0, 0, 0.8) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.dish-card:hover::after {
+    opacity: 1;
+}
+
+.dish-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(180, 110, 29, 0.2);
+}
+
+.dish-image {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #e0e0e0;
+}
+
+.dish-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.dish-card:hover .dish-image img {
+    transform: scale(1.05);
+}
+
+.dish-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+}
+
+.dish-content {
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transition: color 0.4s ease;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dish-card:hover .dish-content {
+    color: white;
+}
+
+.dish-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    transition: color 0.4s ease;
+}
+
+.dish-card:hover h3 {
+    color: white;
+}
+
+.dish-card p {
+    color: #666;
+    font-size: 0.85rem;
+    transition: color 0.4s ease;
+    line-height: 1.3;
+}
+
+.dish-card:hover p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ===================================
+   REVIEWS - TESTIMONIALS SECTION 
+   =================================== */
+.testimonials-section {
+    padding: 5rem 4rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(180, 110, 29, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 20s ease-in-out infinite;
+}
+
+.testimonials-section h2 {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    color: #1a1a1a;
+    font-weight: normal;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonials-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonials-wrapper {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 2px solid transparent;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    visibility: visible;
+    animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.star {
+    color: #ffc107;
+    filter: drop-shadow(0 2px 4px rgba(255, 193, 7, 0.3));
+    animation: starPulse 2s ease-in-out infinite;
+}
+
+.star:nth-child(1) { animation-delay: 0s; }
+.star:nth-child(2) { animation-delay: 0.1s; }
+.star:nth-child(3) { animation-delay: 0.2s; }
+.star:nth-child(4) { animation-delay: 0.3s; }
+.star:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes starPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.testimonial-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-style: italic;
+    direction: rtl;
+    font-family: 'Tajawal', 'Arial', sans-serif;
+}
+
+.testimonial-author {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #b46e1dff;
+    text-align: center;
+    direction: rtl;
+    font-family: 'Tajawal', 'Arial', sans-serif;
+}
+
+/* Navigation Dots */
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 2rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #b46e1dff;
+    width: 30px;
+    border-radius: 6px;
+}
+
+.dot:hover {
+    background: #b46e1dff;
+    transform: scale(1.2);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN FOR TESTIMONIALS
+   =================================== */
+@media (max-width: 768px) {
+    .testimonials-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .testimonials-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+    
+    .testimonials-wrapper {
+        height: 320px;
+    }
+    
+    .testimonial-card {
+        padding: 2rem;
+    }
+    
+    .testimonial-text {
+        font-size: 1.05rem;
+    }
+    
+    .stars {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-section h2 {
+        font-size: 2rem;
+    }
+    
+    .testimonials-wrapper {
+        height: 300px;
+    }
+    
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem;
+    }
+    
+    .stars {
+        font-size: 1.3rem;
+    }
+    
+    .testimonial-author {
+        font-size: 1rem;
+    }
+}
 /* ===================================
    RESPONSIVE DESIGN
    =================================== */

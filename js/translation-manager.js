@@ -1,13 +1,26 @@
 // ===================================
-// LOCARB TRANSLATION MANAGER
+// LOCARB TRANSLATION MANAGER - FIXED
 // Complete translation system with modal and branch support
 // ===================================
 
 class TranslationManager {
   constructor() {
-    this.currentLang = localStorage.getItem("language") || "en";
-    this.translations = translations; // Uses the translations object from translations.js
-    this.branchData = {}; // Will store branch data based on language
+    try {
+      this.currentLang = localStorage.getItem("language") || "en";
+    } catch (e) {
+      this.currentLang = "en";
+      console.warn('localStorage not available, using default language');
+    }
+
+    // Get translations from global object
+    this.translations = window.translations;
+    
+    if (!this.translations) {
+      console.error('❌ Translations object not found!');
+      return;
+    }
+
+    this.branchData = {};
     this.init();
   }
 
@@ -96,7 +109,13 @@ class TranslationManager {
   switchLanguage() {
     // Toggle between English and Arabic
     this.currentLang = this.currentLang === "en" ? "ar" : "en";
-    localStorage.setItem("language", this.currentLang);
+    
+    try {
+      localStorage.setItem("language", this.currentLang);
+    } catch (e) {
+      console.warn('Could not save language preference');
+    }
+    
     this.applyLanguage(this.currentLang);
     this.updateButtonText();
   }
@@ -146,6 +165,15 @@ class TranslationManager {
     // Goals Section
     this.updateGoals(t.goals);
 
+    // Update Packages Section
+    this.updatePackages(t.packages);
+
+    // Update Dishes Section
+    this.updateDishes(t.dishes);
+
+    // Update Testimonials Section
+    this.updateTestimonials(t.testimonials);
+
     // Branches Section - UPDATED
     this.updateBranchesSection(t.branches);
 
@@ -167,8 +195,8 @@ class TranslationManager {
       this.updateBranchInfo(branchSelector.value);
     }
 
-    // UPDATE MODAL DATA
-    this.updateModalData();
+    // UPDATE MODAL DATA - FIXED
+    this.updateModalData(t);
   }
 
   updateBranchesSection(branches) {
@@ -200,35 +228,37 @@ class TranslationManager {
     }
   }
 
-  updateModalData() {
-    const lang = this.currentLang;
-    const t = this.translations[lang];
+  // FIXED: Pass translations as parameter instead of relying on window.modalData
+  updateModalData(t) {
+    // Check if modals exist in translations
+    if (!t.modals) {
+      console.warn('Modal data not found in translations');
+      return;
+    }
 
     // Update the global modalData object with translated content
-    if (typeof window.modalData !== "undefined") {
-      window.modalData = {
-        about: {
-          title: t.modals.about.title,
-          image: "images/meal2.jpg",
-          content: t.modals.about.content,
-        },
-        balanced: {
-          title: t.modals.balanced.title,
-          image: "images/meal3.jpg",
-          content: t.modals.balanced.content,
-        },
-        farm: {
-          title: t.modals.farm.title,
-          image: "images/meal1.jpg",
-          content: t.modals.farm.content,
-        },
-        vision: {
-          title: t.modals.vision.title,
-          image: "images/meal4.jpg",
-          content: t.modals.vision.content,
-        },
-      };
-    }
+    window.modalData = {
+      about: {
+        title: t.modals.about.title,
+        image: "images/meal2.jpg",
+        content: t.modals.about.content,
+      },
+      balanced: {
+        title: t.modals.balanced.title,
+        image: "images/meal3.jpg",
+        content: t.modals.balanced.content,
+      },
+      farm: {
+        title: t.modals.farm.title,
+        image: "images/meal1.jpg",
+        content: t.modals.farm.content,
+      },
+      vision: {
+        title: t.modals.vision.title,
+        image: "images/meal4.jpg",
+        content: t.modals.vision.content,
+      },
+    };
 
     // If a modal is currently open, refresh it
     const modalOverlay = document.getElementById("modalOverlay");
@@ -274,6 +304,9 @@ class TranslationManager {
     const links = [
       "home",
       "about",
+      "packages",
+      "dishes",
+      "reviews",
       "app",
       "branches",
       "goals",
@@ -431,6 +464,70 @@ class TranslationManager {
     if (readMoreBtn) readMoreBtn.textContent = goals.readMore;
   }
 
+  updatePackages(packages) {
+    const section = document.querySelector('.packages-section');
+    if (!section) return;
+
+    const title = section.querySelector('h2');
+    if (title) title.textContent = packages.title;
+
+    const cards = section.querySelectorAll('.package-card');
+    const keys = ['package1', 'package2', 'package3'];
+
+    cards.forEach((card, index) => {
+      const key = keys[index];
+      const cardTitle = card.querySelector('h3');
+      const cardDesc = card.querySelector('p');
+      const price = card.querySelector('.package-price');
+      const button = card.querySelector('.package-btn');
+
+      if (cardTitle && packages[key]?.title) {
+        cardTitle.textContent = packages[key].title;
+      }
+      if (cardDesc && packages[key]?.description) {
+        cardDesc.textContent = packages[key].description;
+      }
+      if (price && packages[key]?.price) {
+        price.textContent = packages[key].price;
+      }
+      if (button && packages[key]?.button) {
+        button.textContent = packages[key].button;
+      }
+    });
+  }
+
+  updateDishes(dishes) {
+    const section = document.querySelector('.dishes-section');
+    if (!section) return;
+
+    const title = section.querySelector('h2');
+    if (title) title.textContent = dishes.title;
+
+    const cards = section.querySelectorAll('.dish-card');
+    const keys = ['dish1', 'dish2', 'dish3', 'dish4', 'dish5', 'dish6'];
+
+    cards.forEach((card, index) => {
+      const key = keys[index];
+      const cardTitle = card.querySelector('h3');
+      const cardDesc = card.querySelector('p');
+
+      if (cardTitle && dishes[key]?.title) {
+        cardTitle.textContent = dishes[key].title;
+      }
+      if (cardDesc && dishes[key]?.description) {
+        cardDesc.textContent = dishes[key].description;
+      }
+    });
+  }
+
+  updateTestimonials(testimonials) {
+    const section = document.querySelector('.testimonials-section');
+    if (!section) return;
+
+    const title = section.querySelector('h2');
+    if (title) title.textContent = testimonials.title;
+  }
+
   updateAssets(assets) {
     const section = document.querySelector(".assets-section");
     if (!section) return;
@@ -484,7 +581,7 @@ class TranslationManager {
     // Update contact icon labels
     const contactLinks = section.querySelectorAll(".contact-icon-link");
     if (contactLinks[0]) {
-      contactLinks[0].setAttribute("aria-label", contact.phone);
+      contactLinks[0].setAttribute("aria-label", contact.callus);
     }
     if (contactLinks[1]) {
       contactLinks[1].setAttribute("aria-label", contact.whatsapp);
@@ -513,38 +610,48 @@ class TranslationManager {
     if (headers[1]) headers[1].textContent = footer.contact;
     if (headers[2]) headers[2].textContent = footer.followUs;
 
-    // Update footer link text
-    const footerLinks = footerSection.querySelectorAll(".footer-section ul li a");
-    const linkTexts = ["home", "about", "app", "contact", "services", "suppliers", "assets"];
-    const t = this.translations[this.currentLang];
+    // Update Quick Links
+    const quickLinksSection =
+      footerSection.querySelectorAll(".footer-section")[1];
+    if (quickLinksSection) {
+      const links = quickLinksSection.querySelectorAll("ul li a");
+      const t = this.translations[this.currentLang];
+      const linkKeys = [
+        "home",
+        "about",
+        "packages",
+        "dishes",
+        "reviews",
+        "app",
+        "contact",
+        "services",
+        "suppliers",
+        "assets",
+      ];
 
-    footerLinks.forEach((link, index) => {
-        const key = linkTexts[index];
-        if (key && t.nav[key]) {
-            link.textContent = t.nav[key];
+      links.forEach((link, index) => {
+        if (linkKeys[index] && t.nav[linkKeys[index]]) {
+          link.textContent = t.nav[linkKeys[index]];
         }
-    });
-
-    // Update footer social links text
-    const socialLinksFooter = footerSection.querySelectorAll(".social-links a");
-    if (socialLinksFooter[0]) {
-        socialLinksFooter[0].textContent = footer.instagram;
-    }
-    if (socialLinksFooter[1]) {
-        socialLinksFooter[1].textContent = footer.tiktok;
+      });
     }
 
-    // Update contact section links if they exist
-    const contactLinksFooter = footerSection.querySelectorAll(".footer-section ul li a");
-    // Find phone and whatsapp links by href pattern
-    contactLinksFooter.forEach(link => {
-        if (link.href.includes("tel:")) {
-            link.textContent = footer.phone;
-        } else if (link.href.includes("wa.me")) {
-            link.textContent = footer.whatsApp;
-        }
-    });
-}
+    // Update Contact Section
+    const contactSection = footerSection.querySelectorAll(".footer-section")[2];
+    if (contactSection) {
+      const links = contactSection.querySelectorAll("ul li a");
+      if (links[0]) links[0].textContent = footer.phone;
+      if (links[1]) links[1].textContent = footer.whatsApp;
+    }
+
+    // Update Social Links
+    const socialSection = footerSection.querySelectorAll(".footer-section")[3];
+    if (socialSection) {
+      const socialLinks = socialSection.querySelectorAll(".social-links a");
+      if (socialLinks[0]) socialLinks[0].textContent = footer.instagram;
+      if (socialLinks[1]) socialLinks[1].textContent = footer.tiktok;
+    }
+  }
 }
 
 // Make it globally available

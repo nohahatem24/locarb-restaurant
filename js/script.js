@@ -397,6 +397,63 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // ===================================
+    // TESTIMONIALS SLIDER
+    // ===================================
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const dots = document.querySelectorAll('.testimonial-dots .dot');
+    let currentTestimonial = 0;
+    const testimonialInterval = 5000; // 5 seconds per testimonial
+
+    function showTestimonial(index) {
+        // Remove active class from all cards and dots
+        testimonialCards.forEach(card => {
+            card.classList.remove('active');
+        });
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+
+        // Add active class to current card and dot
+        if (testimonialCards[index]) {
+            testimonialCards[index].classList.add('active');
+        }
+        if (dots[index]) {
+            dots[index].classList.add('active');
+        }
+    }
+
+    function nextTestimonial() {
+        currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+        showTestimonial(currentTestimonial);
+    }
+
+    // Auto-advance testimonials
+    let testimonialTimer = setInterval(nextTestimonial, testimonialInterval);
+
+    // Click handlers for dots
+    dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+            clearInterval(testimonialTimer);
+            currentTestimonial = parseInt(this.getAttribute('data-index'));
+            showTestimonial(currentTestimonial);
+            // Restart auto-advance
+            testimonialTimer = setInterval(nextTestimonial, testimonialInterval);
+        });
+    });
+
+    // Pause on hover
+    const testimonialsContainer = document.querySelector('.testimonials-container');
+    if (testimonialsContainer) {
+        testimonialsContainer.addEventListener('mouseenter', function() {
+            clearInterval(testimonialTimer);
+        });
+
+        testimonialsContainer.addEventListener('mouseleave', function() {
+            testimonialTimer = setInterval(nextTestimonial, testimonialInterval);
+        });
+    }
+
 }); // END OF DOMContentLoaded
 
 // ===================================
