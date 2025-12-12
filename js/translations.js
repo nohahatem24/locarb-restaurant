@@ -215,7 +215,7 @@ const translations = {
       },
       dish4: {
         title: "Chicken Tandoori",
-        description: "Tender chicken grilled in a tandoor",
+        description: "Tender grilled chicken",
       },
       dish5: {
         title: "Grilled Salmon",

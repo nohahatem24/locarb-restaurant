@@ -2314,7 +2314,7 @@ nav.scrolled {
 }
 
 .dish-card h3 {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     margin-bottom: 0.4rem;
     color: #1a1a1a;
     font-weight: 600;
@@ -2327,7 +2327,7 @@ nav.scrolled {
 
 .dish-card p {
     color: #666;
-    font-size: 0.85rem;
+    font-size: 0.6rem;
     transition: color 0.4s ease;
     line-height: 1.3;
 }
